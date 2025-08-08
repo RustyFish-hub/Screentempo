@@ -143,8 +143,9 @@ export default function PopoutTimer({ initialData }: PopoutTimerProps) {
 
   const togglePin = async () => {
     try {
-      if ('getWindowHandle' in window) {
-        const windowHandle = await window.getWindowHandle();
+      const win = window as any;
+      if ('getWindowHandle' in win) {
+        const windowHandle = await win.getWindowHandle();
         if (!isPinned) {
           await windowHandle.setAlwaysOnTop(true);
           setIsPinned(true);
@@ -155,8 +156,8 @@ export default function PopoutTimer({ initialData }: PopoutTimerProps) {
       } else {
         console.warn('Window Management API not supported in this browser');
       }
-    } catch (error) {
-      console.error('Failed to toggle pin:', error);
+    } catch (_error) {
+      console.error('Failed to toggle pin:', _error);
     }
   };
 
