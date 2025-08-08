@@ -80,7 +80,8 @@ export const playNotificationSound = async (soundId: string = 'gentle-chime', ma
 
 const createBeepSound = (masterVolume: number = 1) => {
   try {
-    const context = new (window.AudioContext || (window as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    const AudioContextClass = window.AudioContext || ((window as any).webkitAudioContext as typeof AudioContext);
+    const context = new AudioContextClass();
     const oscillator = context.createOscillator();
     const gainNode = context.createGain();
     
