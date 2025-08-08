@@ -78,7 +78,7 @@ export const playNotificationSound = async (soundId: string = 'gentle-chime', ma
   }
 };
 
-const createBeepSound = () => {
+const createBeepSound = (masterVolume: number = 1) => {
   try {
     const context = new (window.AudioContext || (window as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
     const oscillator = context.createOscillator();
@@ -93,8 +93,8 @@ const createBeepSound = () => {
     
     // Create a gentle fade in and out
     gainNode.gain.setValueAtTime(0, context.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.05, context.currentTime + 0.1); // Very soft volume (5%)
-    gainNode.gain.setValueAtTime(0.05, context.currentTime + 1.4);
+    gainNode.gain.linearRampToValueAtTime(0.05 * masterVolume, context.currentTime + 0.1); // Very soft volume (5%)
+    gainNode.gain.setValueAtTime(0.05 * masterVolume, context.currentTime + 1.4);
     gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 1.5);
     
     oscillator.start(context.currentTime);
