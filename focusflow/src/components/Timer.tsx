@@ -155,7 +155,7 @@ export default function Timer() {
 
     window.addEventListener('message', handlePopoutMessage);
     return () => window.removeEventListener('message', handlePopoutMessage);
-  }, [selectedPreset.duration]); // Only depend on duration since it's the only value needed for reset
+  }, [isRunning, popoutWindow, selectedPreset, timeLeft]); // Include all dependencies used in the effect
 
   // Update popout window when timer state changes
   useEffect(() => {
@@ -274,7 +274,7 @@ export default function Timer() {
     }
 
     return () => clearInterval(interval);
-  }, [isRunning, timeLeft]);
+  }, [isRunning, timeLeft, selectedPreset, selectedSound]);
 
   // Message and notification logic for 1/2, 1/8, and completion
   useEffect(() => {

@@ -80,7 +80,7 @@ export const playNotificationSound = async (soundId: string = 'gentle-chime', ma
 
 const createBeepSound = () => {
   try {
-    const context = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const context = new (window.AudioContext || (window as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
     const oscillator = context.createOscillator();
     const gainNode = context.createGain();
     
@@ -104,7 +104,7 @@ const createBeepSound = () => {
   }
 };
 
-export const saveToLocalStorage = (key: string, value: any) => {
+export const saveToLocalStorage = <T>(key: string, value: T) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -112,7 +112,7 @@ export const saveToLocalStorage = (key: string, value: any) => {
   }
 };
 
-export const loadFromLocalStorage = (key: string, defaultValue: any) => {
+export const loadFromLocalStorage = <T>(key: string, defaultValue: T): T => {
   try {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;

@@ -149,16 +149,16 @@ export default function PopoutTimer({ initialData }: PopoutTimerProps) {
 
   const togglePin = async () => {
     try {
-      // @ts-ignore - Window Management API types not yet available in TypeScript
+      // @ts-expect-error - Window Management API types not yet available in TypeScript
       if ('getWindowHandle' in window) {
-        // @ts-ignore
+        // @ts-expect-error
         const windowHandle = await window.getWindowHandle();
         if (!isPinned) {
-          // @ts-ignore
+          // @ts-expect-error
           await windowHandle.setAlwaysOnTop(true);
           setIsPinned(true);
         } else {
-          // @ts-ignore
+          // @ts-expect-error
           await windowHandle.setAlwaysOnTop(false);
           setIsPinned(false);
         }
