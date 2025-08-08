@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import type { Database } from '@/types/database';
+
 import type { TimerPresetDB, TimerSessionDB } from '@/types/database';
 
 export async function getCustomPresets(userId: string): Promise<TimerPresetDB[]> {

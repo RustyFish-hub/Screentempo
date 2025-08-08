@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   let supabase = null;
   try {
     supabase = createClientComponentClient();
-  } catch (error) {
+  } catch (_error) {
     console.log('Supabase client not initialized - running in local mode');
   }
 

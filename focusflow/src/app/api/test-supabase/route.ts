@@ -7,7 +7,7 @@ export async function GET() {
     const supabase = createRouteHandlerClient({ cookies });
     
     // Try to make a simple query
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('timer_presets')
       .select('count')
       .limit(1);

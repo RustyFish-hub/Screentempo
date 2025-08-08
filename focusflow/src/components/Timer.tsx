@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Clock, X, Gamepad2, BookOpen, Briefcase, Sun, Moon, Coffee, ChevronRight, ChevronLeft, Maximize2, Settings, Volume2, VolumeX } from 'lucide-react';
-import { formatTime, formatTimeLong, playNotificationSound, saveToLocalStorage, loadFromLocalStorage, SOUND_OPTIONS, SoundOption } from '@/utils/timer';
+import { formatTime, playNotificationSound, saveToLocalStorage, loadFromLocalStorage, SOUND_OPTIONS } from '@/utils/timer';
 import { getMessageSet, getRandomMessage } from '@/utils/messages';
 import Toast from './Toast';
 import { useTheme } from '@/contexts/ThemeContext';

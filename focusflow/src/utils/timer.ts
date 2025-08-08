@@ -99,7 +99,7 @@ const createBeepSound = () => {
     
     oscillator.start(context.currentTime);
     oscillator.stop(context.currentTime + 1.5); // Longer duration (1.5 seconds)
-  } catch (error) {
+  } catch (_error) {
     console.log('Audio notification not supported');
   }
 };

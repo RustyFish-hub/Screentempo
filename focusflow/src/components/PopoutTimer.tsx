@@ -140,25 +140,19 @@ export default function PopoutTimer({ initialData }: PopoutTimerProps) {
     }
   };
 
-  const minimizeWindow = () => {
-    if (window.opener) {
-      window.opener.focus();
-      window.blur();
-    }
-  };
 
   const togglePin = async () => {
     try {
-      // @ts-expect-error - Window Management API types not yet available in TypeScript
+      // @ts-expect-error - Window Management API is a new feature and types are not yet available
       if ('getWindowHandle' in window) {
-        // @ts-expect-error
+        // @ts-expect-error - getWindowHandle method is part of the new Window Management API
         const windowHandle = await window.getWindowHandle();
         if (!isPinned) {
-          // @ts-expect-error
+          // @ts-expect-error - setAlwaysOnTop is a Window Management API method
           await windowHandle.setAlwaysOnTop(true);
           setIsPinned(true);
         } else {
-          // @ts-expect-error
+          // @ts-expect-error - setAlwaysOnTop is a Window Management API method
           await windowHandle.setAlwaysOnTop(false);
           setIsPinned(false);
         }
