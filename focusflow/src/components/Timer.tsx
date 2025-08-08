@@ -1186,27 +1186,7 @@ export default function Timer() {
             {isRunning ? 'Timer is running...' : 'Timer is paused'}
           </div>
 
-          {/* Temporary Supabase Test Button */}
-          <button
-            onClick={async () => {
-              try {
-                const { data, error } = await fetch('/api/test-supabase').then(res => res.json());
-                if (error) {
-                  console.error('Supabase test error:', error);
-                  alert('Supabase connection failed: ' + error.message);
-                } else {
-                  console.log('Supabase test result:', data);
-                  alert('Supabase connected successfully!');
-                }
-              } catch (error) {
-                console.error('Test failed:', error);
-                alert('Failed to test Supabase connection: ' + error);
-              }
-            }}
-            className="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
-          >
-            Test Supabase Connection
-          </button>
+
         </div>
       </div>
     </div>
