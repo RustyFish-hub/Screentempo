@@ -24,7 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  let supabase = null;
+  let supabase: ReturnType<typeof createClientComponentClient> | null = null;
   try {
     supabase = createClientComponentClient();
   } catch (_error) {
