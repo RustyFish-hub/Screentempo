@@ -1151,6 +1151,7 @@ export default function Timer() {
                 
                 if (newWindow) {
                   setPopoutWindow(newWindow);
+                  
                   // Send initial state
                   setTimeout(() => {
                     // Create a serializable version of the preset without React elements
